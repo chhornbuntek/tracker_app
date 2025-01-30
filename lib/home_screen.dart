@@ -565,8 +565,6 @@ class _HomeScreenState extends State<HomeScreen> {
                             ],
                           ),
                           const SizedBox(height: 20),
-
-                          // Expenses List
                           SizedBox(
                             width: double.infinity,
                             height: 468,
@@ -605,7 +603,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           ],
                                         ),
                                         Text(
-                                          '\$${expense['amount']}', // Display Amount per Expense
+                                          '\$${expense['amount']}',
                                           style: const TextStyle(
                                             color: Colors.deepOrange,
                                             fontWeight: FontWeight.bold,
@@ -661,29 +659,23 @@ class _HomeScreenState extends State<HomeScreen> {
               })
           .toList();
 
-      // Get current date and month
       DateTime now = DateTime.now();
-      String todayDate =
-          DateFormat('yyyy-MM-dd').format(now); // Example: "2025-05-18"
-      String currentMonth =
-          DateFormat('yyyy-MM').format(now); // Example: "2025-05"
+      String todayDate = DateFormat('yyyy-MM-dd').format(now);
+      String currentMonth = DateFormat('yyyy-MM').format(now);
 
       // Apply filtering
       if (filter == 'today') {
         expenses = expenses
-            .where((expense) => expense['date']
-                .toString()
-                .startsWith(todayDate)) // Matches today's date
+            .where(
+                (expense) => expense['date'].toString().startsWith(todayDate))
             .toList();
       } else if (filter == 'month') {
         expenses = expenses
-            .where((expense) => expense['date']
-                .toString()
-                .startsWith(currentMonth)) // Matches current month
+            .where((expense) =>
+                expense['date'].toString().startsWith(currentMonth))
             .toList();
       }
 
-      // Calculate filtered total
       double totalAmount =
           expenses.fold(0.0, (sum, item) => sum + (item['amount'] as double));
 

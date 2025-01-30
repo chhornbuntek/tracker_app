@@ -20,7 +20,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final _storage = const FlutterSecureStorage(); // Secure storage instance
+  final _storage = const FlutterSecureStorage();
   bool _obscureText = true;
 
   @override

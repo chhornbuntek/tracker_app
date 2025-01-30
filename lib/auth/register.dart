@@ -256,7 +256,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: jsonEncode({
         'username': username,
         'email': email,
-        'password': password, // Send the password as plain text
+        'password': password,
       }),
     );
 
